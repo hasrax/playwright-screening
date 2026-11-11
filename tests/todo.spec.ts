@@ -53,4 +53,20 @@ test.describe('TodoMVC demo app', () => {
     await todoPage.clearCompleted();
     await expect(todoPage.items).toHaveText(['Write tests', 'Walk the dog']);
   });
+
+  const todoSets = [
+    { name: 'one todo', items: ['Buy milk'] },
+    { name: 'three todos', items: ['Buy milk', 'Write tests', 'Walk the dog'] },
+    { name: 'five todos', items: ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon'] },
+  ];
+
+  for (const { name, items } of todoSets) {
+    test(`adds ${name}`, async () => {
+      await todoPage.addTodos(items);
+      await expect(todoPage.items).toHaveCount(items.length);
+      await expect(todoPage.items).toHaveText(items);
+    });
+  }
 });
+
+  
