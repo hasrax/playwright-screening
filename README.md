@@ -40,4 +40,10 @@ tests/docs.spec.ts        4 tests for playwright.dev
 tests/todo.spec.ts        6 tests for the TodoMVC app
 playwright.config.ts      Playwright configuration
 ```
+## Bonus items
 
+**Data-driven test**
+The TodoMVC spec loops over an array of todo sets (one, three and five todos). For each set it adds the items, then checks both the item count and the item text. Adding a new case only needs a new entry in the array.
+
+**GitHub Actions workflow**
+`.github/workflows/playwright.yml` runs the tests on every push to `main` and `feature/**` branches, and on pull requests into `main`. It installs dependencies with `npm ci`, installs Chromium, runs the tests, and uploads the HTML report as an artifact (kept for 14 days).
